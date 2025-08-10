@@ -7,7 +7,7 @@ import { removeUsersRoute } from "./http/routes/remove-user";
 
 export const app = fastify()
 
-const prefix = { prefix: 'api/v1' };
+const prefix = { prefix: '/api/v1' };
 
 app.register(cors, {
   origin: '*'
