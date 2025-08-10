@@ -4,13 +4,13 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">=22.17.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
     "start:dev": "tsx src/server.ts",
-    "build": "tsup src/server.ts --format esm,cjs --dts --clean",
+    "build": "tsup src/server.ts",
     "start": "node dist/server.js"
   },
   "keywords": [],
