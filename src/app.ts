@@ -1,11 +1,10 @@
 import fastify from "fastify";
 import cors from '@fastify/cors'
-import { createUserRoute } from "./http/routes/create-user";
-import { getUsersRoute } from "./http/routes/get-users";
-import { updateUsersRoute } from "./http/routes/update-user";
-import { removeUsersRoute } from "./http/routes/remove-user";
-import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
+import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
+
+import { signInRoute } from "./http/routes/sign-in";
+import { createUserRoute } from "./http/routes/create-user";
 
 export const app = fastify()
 
@@ -21,7 +20,5 @@ app.register(cors, {
 })
 
 app.register(createUserRoute, prefix);
-app.register(getUsersRoute, prefix);
-app.register(updateUsersRoute, prefix);
-app.register(removeUsersRoute, prefix);
+app.register(signInRoute, prefix);
 
