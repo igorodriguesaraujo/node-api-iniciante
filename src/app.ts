@@ -5,6 +5,7 @@ import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod
 
 import { signInRoute } from "./http/routes/sign-in";
 import { createUserRoute } from "./http/routes/create-user";
+import { meRoute } from "./http/routes/me";
 
 export const app = fastify()
 
@@ -21,4 +22,6 @@ app.register(cors, {
 
 app.register(createUserRoute, prefix);
 app.register(signInRoute, prefix);
+app.register(meRoute, prefix);
+
 
