@@ -43,10 +43,6 @@ export const signInRoute: FastifyPluginCallbackZod = async function (app) {
     return reply.status(200).send({
       error: false,
       message: 'Usuário logado com sucesso',
-      data: {
-        name: user[0].name,
-        email: user[0].email,
-      },
       access_token,
     })
   })
