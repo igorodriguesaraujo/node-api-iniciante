@@ -5,6 +5,7 @@ import { createUser } from "../../service/create-user"
 import { getUserByEmail } from "../../service/get-user-by-email"
 
 import { generateHash } from "../../utils/hash"
+import { sendVerificationEmail } from "../../utils/send-verification-email"
 
 export const createUserRoute: FastifyPluginCallbackZod = async function (app) {
   app.post('/users', {
@@ -36,11 +37,15 @@ export const createUserRoute: FastifyPluginCallbackZod = async function (app) {
       })
     }
 
-    await createUser({
+    const user = await createUser({
       name,
       email,
       password: hashPassword
     })
+
+    if (user[0]) {
+      await sendVerificationEmail(user[0]);
+    }
 
     return reply.status(201).send({
       error: false,
